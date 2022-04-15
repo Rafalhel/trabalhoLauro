@@ -2,7 +2,7 @@ import calendar
 import os
 from datetime import datetime, date
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request
 from classes import Tempo
 
 diretorio = os.getcwd().split('\\')[-1]
@@ -40,27 +40,7 @@ def index():
                            temperaturaSemanal = temperaturaSemanal[0],id = temperaturaSemanal[1], diaSemana = diaSemanaAtual, diaAtual = diaAtual,
                            mesAtual = mesAtual, projeto = diretorio, anoAtual=anoAtual)
 
-@app.route('/2', methods=["POST", "GET"])
-def index2():
-
-    cidade = request.form.get('tempo')
-    if cidade != None:
-        temperatura = Tempo(cidade)
-
-        temperaturaAtual = temperatura.tempoAtualCelcius()
-        try:
-            temperaturaAtual = int(temperaturaAtual)
-        except:
-            temperaturaAtual = None
-    else:
-        cidade = None
-        temperaturaAtual= None
-
-    return render_template('index2.html', temperatura=temperaturaAtual, cidade = cidade)
-
-
-
 if __name__ == '__main__':
     from waitress import serve
-    # serve(app, host='0.0.0.0', port=5000)
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    serve(app, host='0.0.0.0', port=5000)
+    # app.run(host='0.0.0.0', debug=False, port=5000)
