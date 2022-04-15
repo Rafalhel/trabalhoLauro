@@ -19,14 +19,6 @@ def index():
     temperaturaSemanal = temperatura.tempoSemana()
     temperaturaAtual = temperatura.tempoAtualCelcius()
 
-    # else:
-    #     cidade = None
-    #     temperaturaSemanal = None
-    #     temperaturaAtual = None
-    # print(temperaturaAtual)
-    # print(temperaturaSemanal)
-    # print(cidade)
-
     try:
         for i in temperaturaSemanal[0]:
             data = datetime.strptime(i, '%Y-%m-%d').date()
