@@ -34,13 +34,19 @@ def index():
     except:
         ...
 
+    dataAtual = str(datetime.now()).split(' ')[0]
+
+    del temperaturaSemanal[0][dataAtual]
+    del temperaturaSemanal[1][dataAtual]
+
     diaSemanaAtual = calendar.day_name[date.today().weekday()]
     mesAtual = datetime.today().strftime("%b")
+    anoAtual = datetime.today().strftime("%Y")
     diaAtual = date.today().day
 
     return render_template('index.html', cidade = cidade, temperaturaAtual=temperaturaAtual[0], idAtual = temperaturaAtual[1],
                            temperaturaSemanal = temperaturaSemanal[0],id = temperaturaSemanal[1], diaSemana = diaSemanaAtual, diaAtual = diaAtual,
-                           mesAtual = mesAtual, projeto = diretorio)
+                           mesAtual = mesAtual, projeto = diretorio, anoAtual=anoAtual)
 
 @app.route('/2', methods=["POST", "GET"])
 def index2():
