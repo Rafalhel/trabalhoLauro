@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Compass Starter by Ariona, Rian</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		
+		<!--[if lt IE 9]>
+		<script src="{{ url_for('static', filename='js/ie-support/html5.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/ie-support/respond.js') }}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+		
+		<div class="site-content">
+<!--			<div class="site-header">-->
+<!--				<div class="container">-->
+<!--					<a href="index.html" class="branding">-->
+<!--						<img src="images/logo.png" alt="" class="logo">-->
+<!--						<div class="logo-type">-->
+<!--							<h1 class="site-title">Company name</h1>-->
+<!--							<small class="site-description">tagline goes here</small>-->
+<!--						</div>-->
+<!--					</a>-->
+
+<!--					<div class="mobile-navigation"></div>-->
+
+<!--				</div>-->
+<!--			</div> &lt;!&ndash; .site-header &ndash;&gt;-->
+
+			<div class="hero" data-bg-image="{{ url_for('static', filename='images/banner@2x.png') }}">
+				<div class="container">
+					<form method="post" action="" class="find-location">
+						<input type="text" name="tempo" placeholder="Digite o nome da cidade desejada">
+						<input type="submit" name="tempo" value="Procurar Cidade">
+					</form>
+
+				</div>
+			</div>
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-header">
+								<div class="day">{{diaSemana}}</div>
+								<div class="date">{{diaAtual}} {{mesAtual}}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="location">{{cidade}}</div>
+								<div class="degree">
+									<div class="num">{{temperaturaAtual}}<sup>o</sup>C</div>
+									<div class="forecast-icon">
+										<img src="{{projeto}}/images/icons/icon-{{idAtual}}.svg" alt="" width=90>
+									</div>	
+								</div>
+								<span><img src="images/icon-umberella.png" alt="">20%</span>
+								<span><img src="images/icon-wind.png" alt="">18km/h</span>
+								<span><img src="images/icon-compass.png" alt="">East</span>
+							</div>
+						</div>
+						{% for dias in temperaturaSemanal%}
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{temperaturaSemanal[dias][2]}}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="{{projeto}}/images/icons/icon-{{id[dias]}}.svg" alt="" width=48>
+								</div>
+								<div class="degree">{{temperaturaSemanal[dias][1]}}<sup>o</sup>C</div>
+								<small>{{temperaturaSemanal[dias][0]}}<sup>o</sup></small>
+							</div>
+						</div>
+						{%endfor%}
+
+
+					</div>
+				</div>
+			</div>
+
+
+			<footer class="site-footer">
+				<div class="container">
+					<p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+				</div>
+			</footer> <!-- .site-footer -->
+		</div>
+		
+		<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+		
+	</body>
+
+</html>
