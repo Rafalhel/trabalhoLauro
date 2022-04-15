@@ -27,9 +27,9 @@ def index():
         ...
 
     dataAtual = str(datetime.now()).split(' ')[0]
-
-    del temperaturaSemanal[0][dataAtual]
-    del temperaturaSemanal[1][dataAtual]
+    if dataAtual in temperaturaSemanal[0]:
+        del temperaturaSemanal[0][dataAtual]
+        del temperaturaSemanal[1][dataAtual]
 
     diaSemanaAtual = calendar.day_name[date.today().weekday()]
     mesAtual = datetime.today().strftime("%b")
