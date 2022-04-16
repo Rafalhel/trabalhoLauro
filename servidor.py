@@ -35,6 +35,7 @@ def index():
     mesAtual = datetime.today().strftime("%b")
     anoAtual = datetime.today().strftime("%Y")
     diaAtual = date.today().day
+    cidade = temperatura.cidade
 
     return render_template('index.html', cidade = cidade, temperaturaAtual=temperaturaAtual[0], idAtual = temperaturaAtual[1],
                            temperaturaSemanal = temperaturaSemanal[0],id = temperaturaSemanal[1], diaSemana = diaSemanaAtual, diaAtual = diaAtual,

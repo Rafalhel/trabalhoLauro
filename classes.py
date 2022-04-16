@@ -12,7 +12,8 @@ class Tempo:
         link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._token}"
         requisicao = requests.get(link)
         if requisicao.status_code == 404:
-            link = f"https://api.openweathermap.org/data/2.5/weather?q=São Paulo&appid={self._token}"
+            self.cidade = 'São Paulo'
+            link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._token}"
             requisicao = requests.get(link)
         iRETORNO_REQ = json.loads(requisicao.text)
         try:
@@ -25,7 +26,8 @@ class Tempo:
         link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._token}"
         requisicao = requests.get(link)
         if requisicao.status_code == 404:
-            link = f"https://api.openweathermap.org/data/2.5/forecast?q=São Paulo&appid={self._token}"
+            self.cidade = 'São Paulo'
+            link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._token}"
             requisicao = requests.get(link)
         iRETORNO_REQ = json.loads(requisicao.text)
         dados = {}
