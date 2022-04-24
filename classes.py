@@ -5,15 +5,15 @@ import requests
 
 class Tempo:
     def __init__(self, cidade):
-        self._token = "a988719497196c6641b376754e65d835"
+        self._TOKEN = "a988719497196c6641b376754e65d835"
         self.cidade = cidade
 
-    def tempoAtualCelcius(self):
-        link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._token}"
+    def tempoAtualCelsius(self):
+        link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._TOKEN}"
         requisicao = requests.get(link)
         if requisicao.status_code == 404:
             self.cidade = 'São Paulo'
-            link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._token}"
+            link = f"https://api.openweathermap.org/data/2.5/weather?q={self.cidade}&appid={self._TOKEN}"
             requisicao = requests.get(link)
         iRETORNO_REQ = json.loads(requisicao.text)
         try:
@@ -23,11 +23,11 @@ class Tempo:
         except:
             return None
     def tempoSemana(self):
-        link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._token}"
+        link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._TOKEN}"
         requisicao = requests.get(link)
         if requisicao.status_code == 404:
             self.cidade = 'São Paulo'
-            link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._token}"
+            link = f"https://api.openweathermap.org/data/2.5/forecast?q={self.cidade}&appid={self._TOKEN}"
             requisicao = requests.get(link)
         iRETORNO_REQ = json.loads(requisicao.text)
         dados = {}

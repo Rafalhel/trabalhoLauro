@@ -17,7 +17,7 @@ def index():
     temperatura = Tempo(cidade)
 
     temperaturaSemanal = temperatura.tempoSemana()
-    temperaturaAtual = temperatura.tempoAtualCelcius()
+    temperaturaAtual = temperatura.tempoAtualCelsius()
 
     try:
         for i in temperaturaSemanal[0]:
