@@ -46,11 +46,9 @@ class Tempo:
                     dados[dia] = []
                     dados[dia].append(tempMin)
                     dados[dia].append(tempMax)
-                    # dados[dia].append(icon)
                 else:
                     dados[dia].append(tempMin)
                     dados[dia].append(tempMax)
-                    # dados[dia].append(icon)
 
                 if dados2.get(dia) == None:
                     dados2[dia] = []
